@@ -15,9 +15,9 @@ const currencyChoices = [
 
 const NetworkEdit = (props) => {
   return (
-    <Edit title="Edit Store" {...props}>
+    <Edit title="Edit Network" {...props}>
       <SimpleForm>
-        <TextInput disabled source="id" />
+        <NumberInput disabled source="id" />
         <TextInput source="name" />
         <TextInput source="shortname" />
         <TextInput source="namespace" />

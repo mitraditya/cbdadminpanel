@@ -1,10 +1,10 @@
 import React from 'react';
-import { List, Datagrid, TextField, EditButton, DeleteButton } from "react-admin";
+import { List, Datagrid, TextField, NumberField, EditButton, DeleteButton } from "react-admin";
 
 const NetworkList = (props) => {
   return <List {...props}>
     <Datagrid  rowClick="edit">
-        <TextField source='id' />
+        <NumberField source='id' />
         <TextField source='name' label='store'/>
         <TextField source='affiliate_id' label='Affiliate Id' />
         <TextField source='confirm_days' />

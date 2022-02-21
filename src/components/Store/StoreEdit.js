@@ -17,7 +17,7 @@ const StoreEdit = (props) => {
   return (
     <Edit title="Edit Store" {...props}>
       <SimpleForm>
-        <TextInput disabled source="id" />
+        <NumberInput disabled source="id" />
         <TextInput source="name" />
         <TextInput multiline source="homepage" />
         <TextInput multiline source="affiliate_link" />

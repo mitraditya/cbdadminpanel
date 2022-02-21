@@ -36,7 +36,7 @@ const StoreCreate = (props) => {
         <TextInput source="rate_type" />
         <TextInput source="cashback_was" />
         <TextInput source="tracking_speed" />
-        <NumberInput source="visits" />
+        <NumberInput source="visits" validate={required()} />
         <TextInput source="terms" />
         <TextInput source="tips" />
         <TextInput source="h1" />
