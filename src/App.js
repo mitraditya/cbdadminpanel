@@ -1,6 +1,7 @@
 import React from 'react';
-import { fetchUtils, Admin, Resource } from 'react-admin';
+import { fetchUtils, Admin, Resource, Layout } from 'react-admin';
 import restProvider from 'ra-data-simple-rest';
+import TreeMenu from '@bb-tech/ra-treemenu';
 import Dashboard from './components/Dashboard';
 import authProvider from './components/Auth/authProvider';
 import LoginPage from './components/Auth/LoginPage';
@@ -21,6 +22,11 @@ import SalesTransactionsEdit from './components/Transactions/Sales/SalesTransact
 import CashbackTransactionsList from './components/Transactions/Cashback/CashbackTransactionsList';
 import CashbackTransactionsCreate from './components/Transactions/Cashback/CashbackTransactionsCreate';
 import CashbackTransactionsEdit from './components/Transactions/Cashback/CashbackTransactionsEdit';
+import BonusTransactionsList from './components/Transactions/Bonus/BonusTransactionsList';
+import BonusTransactionsCreate from './components/Transactions/Bonus/BonusTransactionsCreate';
+import BonusTransactionsEdit from './components/Transactions/Bonus/BonusTransactionsEdit';
+import ReferrerTransactionsList from './components/Transactions/Referrer/ReferrerTransactionsList';
+import ReferrerTransactionsEdit from './components/Transactions/Referrer/ReferrerTransactionsEdit';
 
 const httpClient = (url, options = {}) => {
   if (!options.headers) {
@@ -34,15 +40,20 @@ const dataProvider = restProvider(process.env.REACT_APP_BACKEND, httpClient);
 
 function App() {
   return (
-    <Admin loginPage={LoginPage} dashboard={Dashboard} authProvider={authProvider} dataProvider={dataProvider}>
+    <Admin layout={(props) => <Layout {...props} menu={TreeMenu} />} loginPage={LoginPage} dashboard={Dashboard} authProvider={authProvider} dataProvider={dataProvider}>
+      {/* Stores */}
       <Resource name="stores" list={StoreList} create={StoreCreate} edit={StoreEdit}/>
-      <Resource name="networks" options={{ label: 'Affiliate Networks' }} list={NetworkList} create={NetworkCreate} edit={NetworkEdit}/>
-      <Resource name="logs" options={{ label: 'Postback Logs' }} list={PostbackLogList} edit={PostbackLogEdit}/>
-      <Resource name="txn/mock" options={{ label: 'Mock Transactions' }} list={MockTransactionsList} create={MockTransactionsCreate} edit={MockTransactionsEdit} />
-      <Resource name="txn/sales" options={{ label: 'Sales Transactions' }} list={SalesTransactionsList} create={SalesTransactionsCreate} edit={SalesTransactionsEdit} />
-      <Resource name="txn/cashback" options={{ label: 'Cashback Transactions' }} list={CashbackTransactionsList} create={CashbackTransactionsCreate} edit={CashbackTransactionsEdit} />
-      {/* <Resource name="txn/bonus" options={{ label: 'Bonus Transactions' }} list={BonusTransactionsList} />
-      <Resource name="txn/referrer" options={{ label: 'Referrer Transactions' }} list={ReferrerTransactionsList} /> */}
+      {/* Affiliate Networks */}
+      <Resource name='affiliate_networks' options={{ "label": "Affiliate Networks", "isMenuParent": true  }} />
+      <Resource name="networks" options={{ "label": "Affiliate Networks", "menuParent": "affiliate_networks" }} list={NetworkList} create={NetworkCreate} edit={NetworkEdit}/>
+      <Resource name="logs" options={{ "label": "Postback Logs", "menuParent": "affiliate_networks" }} list={PostbackLogList} edit={PostbackLogEdit}/>
+      {/* Transactions */}
+      <Resource name='transactions' options={{ "label": "Transactions", "isMenuParent": true  }} />
+      <Resource name="txn/mock" options={{ "label": "Mock Transactions", "menuParent": "transactions" }} list={MockTransactionsList} create={MockTransactionsCreate} edit={MockTransactionsEdit} />
+      <Resource name="txn/sales" options={{ "label": "Sales Transactions", "menuParent": "transactions" }} list={SalesTransactionsList} create={SalesTransactionsCreate} edit={SalesTransactionsEdit} />
+      <Resource name="txn/cashback" options={{ "label": "Cashback Transactions", "menuParent": "transactions" }} list={CashbackTransactionsList} create={CashbackTransactionsCreate} edit={CashbackTransactionsEdit} />
+      <Resource name="txn/bonus" options={{ "label": "Bonus Transactions", "menuParent": "transactions" }} list={BonusTransactionsList} create={BonusTransactionsCreate} edit={BonusTransactionsEdit} />
+      <Resource name="txn/referrer" options={{ "label": "Referrer Transactions", "menuParent": "transactions" }} list={ReferrerTransactionsList} edit={ReferrerTransactionsEdit} />
     </Admin>
   );
 }
