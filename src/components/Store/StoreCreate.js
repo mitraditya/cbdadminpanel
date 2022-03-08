@@ -6,6 +6,8 @@ import {
   BooleanInput,
   NumberInput,
   AutocompleteInput,
+  ImageField,
+  ImageInput,
   required,
 } from "react-admin";
 
@@ -42,7 +44,9 @@ const StoreCreate = (props) => {
         <TextInput source="h1" />
         <TextInput source="h2" />
         <TextInput source="description" />
-        <TextInput source="logo" />
+        <ImageInput source="image" accept="image/*">
+            <ImageField source="image" title="Image" />
+        </ImageInput>
         <TextInput source="network_campaign_id" label="Network Campaign Id" />
         <NumberInput source="coupon_count" />
         <NumberInput source="clicks" />
