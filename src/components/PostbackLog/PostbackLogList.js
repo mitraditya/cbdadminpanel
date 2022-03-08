@@ -3,7 +3,7 @@ import { List, Datagrid, TextField, NumberField, EditButton, DeleteButton } from
 
 const PostbackLogList = (props) => {
   return <List {...props}>
-    <Datagrid  rowClick="edit">
+    <Datagrid rowClick="edit">
         <NumberField source='id' />
         <TextField source='network_id' label='Network'/>
         <TextField source='sale_date' />
