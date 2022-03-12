@@ -32,6 +32,16 @@ import ClicksHistoryEdit from './components/Clicks/ClicksHistoryEdit';
 import PayoutRequestsList from './components/PayoutRequests/PayoutRequestsList';
 import PayoutRequestsCreate from './components/PayoutRequests/PayoutRequestsCreate';
 import PayoutRequestsEdit from './components/PayoutRequests/PayoutRequestsEdit';
+import BankTransferList from './components/BankTransfer/BankTransferList';
+import BankTransferEdit from './components/BankTransfer/BankTransferEdit';
+import PaytmWalletTransferList from './components/PaytmWalletTransfer/PaytmWalletTransferList';
+import PaytmWalletTransferCreate from './components/PaytmWalletTransfer/PaytmWalletTransferCreate';
+import PaytmWalletTransferEdit from './components/PaytmWalletTransfer/PaytmWalletTransferEdit';
+import PaytmApiLogList from './components/PaytmApiLog/PaytmApiLogList';
+import PaytmApiLogCreate from './components/PaytmApiLog/PaytmApiLogCreate';
+import PaytmApiLogEdit from './components/PaytmApiLog/PaytmApiLogEdit';
+import MissingClaimsList from './components/MissingClaims/MissingClaimsList';
+import MissingClaimsEdit from './components/MissingClaims/MissingClaimsEdit';
 
 const httpClient = (url, options = {}) => {
   if (!options.headers) {
@@ -63,6 +73,10 @@ function App() {
       <Resource name='user_requests' options={{ "label": "User Requests", "isMenuParent": true  }} />
       <Resource name="clicks" options={{ "label": "Clicks History", "menuParent": "user_requests" }} list={ClicksHistoryList} edit={ClicksHistoryEdit} />
       <Resource name="payoutrequests" options={{ "label": "Payout Requests", "menuParent": "user_requests" }} list={PayoutRequestsList} create={PayoutRequestsCreate} edit={PayoutRequestsEdit} />
+      <Resource name="payoutrequests/bankpayouts" options={{ "label": "Bank Transfer-Paytm API", "menuParent": "user_requests" }} list={BankTransferList} edit={BankTransferEdit} />
+      <Resource name="payoutrequests/paytmwalletpayouts" options={{ "label": "Paytm Wallet Transfer", "menuParent": "user_requests" }} list={PaytmWalletTransferList} create={PaytmWalletTransferCreate} edit={PaytmWalletTransferEdit} />
+      <Resource name="payoutrequests" options={{ "label": "Paytm API Log", "menuParent": "user_requests" }} list={PaytmApiLogList} create={PaytmApiLogCreate} edit={PaytmApiLogEdit} />
+      <Resource name="missingclaims" options={{ "label": "Missing Claims", "menuParent": "user_requests" }} list={MissingClaimsList} edit={MissingClaimsEdit} />
     </Admin>
   );
 }

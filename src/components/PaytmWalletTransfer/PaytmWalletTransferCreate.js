@@ -1,9 +1,9 @@
 import React from 'react';
-import { Edit, SimpleForm, TextInput, NumberInput } from "react-admin";
+import { Create, SimpleForm, TextInput, NumberInput } from "react-admin";
 
-const PayoutRequestsEdit = (props) => {
+const PaytmWalletTransferCreate = (props) => {
   return (
-    <Edit title="Edit a Payout Request" {...props}>
+    <Create title="Create a Payout Request" {...props}>
         <SimpleForm>
             <TextInput source='payment_id' label='Payment Id'/>
             <TextInput source='user_id.email' label='User'/>
@@ -17,8 +17,8 @@ const PayoutRequestsEdit = (props) => {
             <TextInput source='payment_ref_num' />
             <TextInput source='paid_at' />
         </SimpleForm>
-    </Edit>
+    </Create>
   );
 };
 
-export default PayoutRequestsEdit;
+export default PaytmWalletTransferCreate;

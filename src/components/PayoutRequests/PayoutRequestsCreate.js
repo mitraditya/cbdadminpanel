@@ -6,9 +6,8 @@ const PayoutRequestsCreate = (props) => {
     <Create title="Create a Payout Request" {...props}>
         <SimpleForm>
             <TextInput source='payment_id' label='Payment Id'/>
-            <TextInput source='user_id' label='User'/>
+            <TextInput source='user_id.email' label='User'/>
             <TextInput source='payment_mode' label='Method' />
-            <NumberInput source='account' />
             <NumberInput source='cashback_amount' />
             <NumberInput source='reward_amount' />
             <TextInput source='status' />
