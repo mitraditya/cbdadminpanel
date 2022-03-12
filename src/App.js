@@ -42,6 +42,10 @@ import PaytmApiLogCreate from './components/PaytmApiLog/PaytmApiLogCreate';
 import PaytmApiLogEdit from './components/PaytmApiLog/PaytmApiLogEdit';
 import MissingClaimsList from './components/MissingClaims/MissingClaimsList';
 import MissingClaimsEdit from './components/MissingClaims/MissingClaimsEdit';
+import SnELinksList from './components/SnELinks/SnELinksList';
+import SnELinksEdit from './components/SnELinks/SnELinksEdit';
+import PayoutModeList from './components/PayoutMode/PayoutModeList';
+import PayoutModeEdit from './components/PayoutMode/PayoutModeEdit';
 
 const httpClient = (url, options = {}) => {
   if (!options.headers) {
@@ -77,6 +81,10 @@ function App() {
       <Resource name="payoutrequests/paytmwalletpayouts" options={{ "label": "Paytm Wallet Transfer", "menuParent": "user_requests" }} list={PaytmWalletTransferList} create={PaytmWalletTransferCreate} edit={PaytmWalletTransferEdit} />
       <Resource name="payoutrequests" options={{ "label": "Paytm API Log", "menuParent": "user_requests" }} list={PaytmApiLogList} create={PaytmApiLogCreate} edit={PaytmApiLogEdit} />
       <Resource name="missingclaims" options={{ "label": "Missing Claims", "menuParent": "user_requests" }} list={MissingClaimsList} edit={MissingClaimsEdit} />
+      {/* Users Information */}
+      <Resource name='users_information' options={{ "label": "Users Information", "isMenuParent": true  }} />
+      <Resource name="links" options={{ "label": "Links for S&E", "menuParent": "users_information" }} list={SnELinksList} edit={SnELinksEdit} />
+      <Resource name="mode" options={{ "label": "Payout Mode Info", "menuParent": "users_information" }} list={PayoutModeList} edit={PayoutModeEdit} />
     </Admin>
   );
 }
