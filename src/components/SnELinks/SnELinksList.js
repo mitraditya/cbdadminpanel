@@ -5,7 +5,7 @@ const SnELinksList = (props) => {
   return <List {...props}>
     <Datagrid rowClick="edit">
         <TextField source='user.email' label='User'/>
-        <TextField source='store' />
+        <TextField source='store.name' />
         <NumberField source='clicks' />
         <NumberField source='earning' />
         <TextField source='createdAt' />

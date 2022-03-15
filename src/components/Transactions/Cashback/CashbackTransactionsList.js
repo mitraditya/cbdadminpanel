@@ -5,10 +5,10 @@ const CashbackTransactionsList = (props) => {
   return <List {...props}>
     <Datagrid rowClick="edit">
         <NumberField source='id' />
-        <TextField source='user' />
+        <TextField source='user.email' />
         <TextField source='network_id.name' label='Network' />
-        <TextField source='store' />
-        <NumberField source='click_id' />
+        <TextField source='store.name' label='Store' />
+        <NumberField source='click_id.id' />
         <NumberField source='cashback' />
         <TextField source='status' />
         <TextField source='updated_at' />

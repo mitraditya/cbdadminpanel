@@ -11,7 +11,7 @@ const MockTransactionsCreate = (props) => {
   return (
     <Create title="Create a Mock Transaction" {...props}>
       <SimpleForm>
-        <TextInput source='network_id' label='Network Id' />
+        <TextInput source='network_id.name' label='Network Id' />
         <TextInput source='network_campaign_id' label='Network Campaign Id' />
         <TextInput source='transaction_id' label='Transaction Id' validate={required()} />
         <TextInput source='commission_id' label='Commission Id' />
