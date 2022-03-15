@@ -79,7 +79,7 @@ function App() {
       <Resource name="payoutrequests" options={{ "label": "Payout Requests", "menuParent": "user_requests" }} list={PayoutRequestsList} create={PayoutRequestsCreate} edit={PayoutRequestsEdit} />
       <Resource name="payoutrequests/bankpayouts" options={{ "label": "Bank Transfer-Paytm API", "menuParent": "user_requests" }} list={BankTransferList} edit={BankTransferEdit} />
       <Resource name="payoutrequests/paytmwalletpayouts" options={{ "label": "Paytm Wallet Transfer", "menuParent": "user_requests" }} list={PaytmWalletTransferList} create={PaytmWalletTransferCreate} edit={PaytmWalletTransferEdit} />
-      <Resource name="payoutrequests" options={{ "label": "Paytm API Log", "menuParent": "user_requests" }} list={PaytmApiLogList} create={PaytmApiLogCreate} edit={PaytmApiLogEdit} />
+      {/* <Resource name="payoutrequests" options={{ "label": "Paytm API Log", "menuParent": "user_requests" }} list={PaytmApiLogList} create={PaytmApiLogCreate} edit={PaytmApiLogEdit} /> */}
       <Resource name="missingclaims" options={{ "label": "Missing Claims", "menuParent": "user_requests" }} list={MissingClaimsList} edit={MissingClaimsEdit} />
       {/* Users Information */}
       <Resource name='users_information' options={{ "label": "Users Information", "isMenuParent": true  }} />

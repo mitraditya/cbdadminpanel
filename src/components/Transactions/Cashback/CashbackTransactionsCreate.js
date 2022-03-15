@@ -14,7 +14,7 @@ const CashbackTransactionsCreate = (props) => {
       <SimpleForm>
         <TextInput source='user' />
         <TextInput source='sale_id' label='Sale Id' />
-        <TextInput source='network_id' label='Network Id' />
+        <TextInput source='network_id.name' label='Network Id' />
         <TextInput source='order_id' label='Order Id' />
         <TextInput source='store' />
         <TextInput source='click_id' label='Click Id' />
