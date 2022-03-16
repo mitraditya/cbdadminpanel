@@ -14,9 +14,9 @@ const StoreCategoryCreate = (props) => {
       <Create title="Create a Store Category" {...props}>
         <SimpleForm>
           <TextInput source="name" validate={required()} />
-          <TextInput multiline source="slug" validate={required()} />
-          <ImageInput source="image" accept="image/*">
-            <ImageField source="image" title="Image" />
+          <TextInput source="slug" validate={required()} />
+          <ImageInput source="image" accept="image/*" validate={required()}>
+            <ImageField source="src" title="title" />
           </ImageInput>
         </SimpleForm>
       </Create>

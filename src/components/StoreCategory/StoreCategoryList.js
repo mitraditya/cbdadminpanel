@@ -16,8 +16,8 @@ const StoreCategoryList = (props) => {
         <NumberField source="cat_id" label="cat_id" />
         <TextField source="name" label="store" />
         <TextField source="slug" />
-        <EditButton basePath="stores/category" />
-        <DeleteButton basePath="stores/category" />
+        <EditButton basePath="category" />
+        <DeleteButton basePath="category" />
       </Datagrid>
     </List>
   );

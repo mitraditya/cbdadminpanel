@@ -1,6 +1,5 @@
 import React from "react";
-import { fetchUtils, Admin, Resource, Layout } from "react-admin";
-import restProvider from "ra-data-simple-rest";
+import { Admin, Resource, Layout } from "react-admin";
 import TreeMenu from "@bb-tech/ra-treemenu";
 import Dashboard from "./components/Dashboard";
 import authProvider from "./components/Auth/authProvider";
@@ -47,16 +46,9 @@ import SnELinksEdit from "./components/SnELinks/SnELinksEdit";
 import PayoutModeList from "./components/PayoutMode/PayoutModeList";
 import PayoutModeEdit from "./components/PayoutMode/PayoutModeEdit";
 import StoreCategoryList from "./components/StoreCategory/StoreCategoryList";
-
-const httpClient = (url, options = {}) => {
-  if (!options.headers) {
-    options.headers = new Headers({ Accept: "application/json" });
-  }
-  const { token } = JSON.parse(localStorage.getItem("auth"));
-  options.headers.set("Authorization", `${token}`);
-  return fetchUtils.fetchJson(url, options);
-};
-const dataProvider = restProvider(process.env.REACT_APP_BACKEND, httpClient);
+import StoreCategoryCreate from "./components/StoreCategory/StoreCategoryCreate";
+import StoreCategoryEdit from "./components/StoreCategory/StoreCategoryEdit";
+import dataProvider from "./dataProvider";
 
 function App() {
   return (
@@ -73,8 +65,8 @@ function App() {
         name="stores/category"
         options={{ label: "Store Categories", menuParent: "store" }}
         list={StoreCategoryList}
-        // create={StoreCreate}
-        // edit={StoreEdit}
+        create={StoreCategoryCreate}
+        edit={StoreCategoryEdit}
       />
       <Resource
         name="stores"
