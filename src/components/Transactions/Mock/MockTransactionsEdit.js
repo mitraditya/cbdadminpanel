@@ -10,7 +10,7 @@ const MockTransactionsEdit = (props) => {
   return (
     <Edit title="Edit Mock Transaction" {...props}>
       <SimpleForm>
-      <TextInput source='network_id' label='Network Id' />
+      <TextInput source='network_id.name' label='Network Id' />
         <TextInput source='network_campaign_id' label='Network Campaign Id' />
         <TextInput source='transaction_id' label='Transaction Id' />
         <TextInput source='commission_id' label='Commission Id' />

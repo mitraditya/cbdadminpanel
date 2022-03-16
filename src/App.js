@@ -181,13 +181,7 @@ function App() {
         create={PaytmWalletTransferCreate}
         edit={PaytmWalletTransferEdit}
       />
-      <Resource
-        name="payoutrequests"
-        options={{ label: "Paytm API Log", menuParent: "user_requests" }}
-        list={PaytmApiLogList}
-        create={PaytmApiLogCreate}
-        edit={PaytmApiLogEdit}
-      />
+      {/* <Resource name="payoutrequests" options={{ "label": "Paytm API Log", "menuParent": "user_requests" }} list={PaytmApiLogList} create={PaytmApiLogCreate} edit={PaytmApiLogEdit} /> */}
       <Resource
         name="missingclaims"
         options={{ label: "Missing Claims", menuParent: "user_requests" }}

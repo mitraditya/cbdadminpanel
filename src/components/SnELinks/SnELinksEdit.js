@@ -6,7 +6,7 @@ const SnELinksEdit = (props) => {
     <Edit title="Edit a SnE Link" {...props}>
         <SimpleForm>
             <TextInput source='user.email' label='User'/>
-            <TextInput source='store' />
+            <TextInput source='store.name' />
             <TextInput source='mainlink' label='Offer Link' />
             <TextInput source='shortlink' label='Link Code' />
             <NumberInput source='clicks' />
