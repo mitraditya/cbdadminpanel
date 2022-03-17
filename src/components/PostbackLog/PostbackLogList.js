@@ -12,8 +12,8 @@ const PostbackLogList = (props) => {
         <TextField source='status' label='Sale Status'/>
         <NumberField source='aff_sub1' />
         <TextField source='updated_at' />
-        <EditButton basePath='logs' />
-        <DeleteButton basePath='logs' />
+        <EditButton basePath='/logs' />
+        <DeleteButton basePath='/logs' />
     </Datagrid>
   </List>;
 };
