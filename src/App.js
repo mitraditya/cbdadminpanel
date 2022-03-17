@@ -1,5 +1,6 @@
 import React from "react";
-import { Admin, Resource, Layout } from "react-admin";
+import { fetchUtils, Admin, Resource, Layout } from "react-admin";
+import restProvider from "ra-data-simple-rest";
 import TreeMenu from "@bb-tech/ra-treemenu";
 import Dashboard from "./components/Dashboard";
 import authProvider from "./components/Auth/authProvider";
@@ -45,6 +46,11 @@ import SnELinksList from "./components/SnELinks/SnELinksList";
 import SnELinksEdit from "./components/SnELinks/SnELinksEdit";
 import PayoutModeList from "./components/PayoutMode/PayoutModeList";
 import PayoutModeEdit from "./components/PayoutMode/PayoutModeEdit";
+import UserEarningList from "./components/BusinessReports/UserEarningList";
+import NetworkEarningList from "./components/BusinessReports/NetworkEarningList ";
+import StoreEarningList from "./components/BusinessReports/StoreEarningList";
+import ProfitReportList from "./components/BusinessReports/ProfitReportList";
+
 import StoreCategoryList from "./components/StoreCategory/StoreCategoryList";
 import StoreCategoryCreate from "./components/StoreCategory/StoreCategoryCreate";
 import StoreCategoryEdit from "./components/StoreCategory/StoreCategoryEdit";
@@ -88,7 +94,6 @@ function App() {
         create={StoreCategoryCreate}
         edit={StoreCategoryEdit}
       />
-
       {/* Affiliate Networks */}
       <Resource
         name="affiliate_networks"
@@ -150,13 +155,63 @@ function App() {
         edit={ReferrerTransactionsEdit}
       />
       {/* User Requests */}
-      <Resource name='user_requests' options={{ "label": "User Requests", "isMenuParent": true  }} />
+      <Resource
+        name="user_requests"
+        options={{ label: "User Requests", isMenuParent: true }}
+      />
+      <Resource
+        name="clicks"
+        options={{ label: "Clicks History", menuParent: "user_requests" }}
+        list={ClicksHistoryList}
+        edit={ClicksHistoryEdit}
+      />
+      <Resource
+        name="payoutrequests"
+        options={{ label: "Payout Requests", menuParent: "user_requests" }}
+        list={PayoutRequestsList}
+        create={PayoutRequestsCreate}
+        edit={PayoutRequestsEdit}
+      />
+      <Resource
+        name="payoutrequests/bankpayouts"
+        options={{
+          label: "Bank Transfer-Paytm API",
+          menuParent: "user_requests",
+        }}
+        list={BankTransferList}
+        edit={BankTransferEdit}
+      />
+      <Resource
+        name="payoutrequests/paytmwalletpayouts"
+        options={{
+          label: "Paytm Wallet Transfer",
+          menuParent: "user_requests",
+        }}
+        list={PaytmWalletTransferList}
+        create={PaytmWalletTransferCreate}
+        edit={PaytmWalletTransferEdit}
+      />
+      {/* <Resource name="payoutrequests" options={{ "label": "Paytm API Log", "menuParent": "user_requests" }} list={PaytmApiLogList} create={PaytmApiLogCreate} edit={PaytmApiLogEdit} /> */}
+      <Resource
+        name="missingclaims"
+        options={{ label: "Missing Claims", menuParent: "user_requests" }}
+        list={MissingClaimsList}
+        edit={MissingClaimsEdit}
+      />
+      <Resource
+        name="payoutrequests/apiLog"
+        options={{ label: "Paytm API Log", menuParent: "user_requests" }}
+        list={PaytmApiLogList}
+        create={PaytmApiLogCreate}
+        edit={PaytmApiLogEdit}
+      />
+      {/* <Resource name='user_requests' options={{ "label": "User Requests", "isMenuParent": true  }} />
       <Resource name="clicks" options={{ "label": "Clicks History", "menuParent": "user_requests" }} list={ClicksHistoryList} edit={ClicksHistoryEdit} />
       <Resource name="payoutrequests" options={{ "label": "Payout Requests", "menuParent": "user_requests" }} list={PayoutRequestsList} create={PayoutRequestsCreate} edit={PayoutRequestsEdit} />
       <Resource name="payoutrequests/bankpayouts" options={{ "label": "Bank Transfer-Paytm API", "menuParent": "user_requests" }} list={BankTransferList} edit={BankTransferEdit} />
       <Resource name="payoutrequests/paytmwalletpayouts" options={{ "label": "Paytm Wallet Transfer", "menuParent": "user_requests" }} list={PaytmWalletTransferList} create={PaytmWalletTransferCreate} edit={PaytmWalletTransferEdit} />
       <Resource name="payoutrequests/apiLog" options={{ "label": "Paytm API Log", "menuParent": "user_requests" }} list={PaytmApiLogList} create={PaytmApiLogCreate} edit={PaytmApiLogEdit} />
-      <Resource name="missingclaims" options={{ "label": "Missing Claims", "menuParent": "user_requests" }} list={MissingClaimsList} edit={MissingClaimsEdit} />
+      <Resource name="missingclaims" options={{ "label": "Missing Claims", "menuParent": "user_requests" }} list={MissingClaimsList} edit={MissingClaimsEdit} /> */}
       {/* Users Information */}
       <Resource
         name="users_information"
@@ -174,9 +229,41 @@ function App() {
         list={PayoutModeList}
         edit={PayoutModeEdit}
       />
+      <Resource
+        name="business_report"
+        options={{ label: "Business Reports", isMenuParent: true }}
+      />
+      <Resource
+        name="earning/profitreport"
+        options={{ label: "Profit Report", menuParent: "business_report" }}
+        list={ProfitReportList}
+      />
+      <Resource
+        name="earning/store"
+        options={{ label: "Earning By Stores", menuParent: "business_report" }}
+        list={StoreEarningList}
+      />
+      <Resource
+        name="earning/network"
+        options={{
+          label: "Earning By Networks",
+          menuParent: "business_report",
+        }}
+        list={NetworkEarningList}
+      />
+      <Resource
+        name="earning/user"
+        options={{ label: "Earning By Users", menuParent: "business_report" }}
+        list={UserEarningList}
+      />
+      {/* <Resource
+        name="settings"
+        list={StoreList}
+        create={StoreCreate}
+        edit={StoreEdit}
+      /> */}
     </Admin>
   );
 }
-
 
 export default App;
