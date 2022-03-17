@@ -1,6 +1,5 @@
 import React from "react";
-import { fetchUtils, Admin, Resource, Layout } from "react-admin";
-import restProvider from "ra-data-simple-rest";
+import { Admin, Resource, Layout } from "react-admin";
 import TreeMenu from "@bb-tech/ra-treemenu";
 import Dashboard from "./components/Dashboard";
 import authProvider from "./components/Auth/authProvider";
@@ -205,13 +204,12 @@ function App() {
         create={PaytmApiLogCreate}
         edit={PaytmApiLogEdit}
       />
-      {/* <Resource name='user_requests' options={{ "label": "User Requests", "isMenuParent": true  }} />
-      <Resource name="clicks" options={{ "label": "Clicks History", "menuParent": "user_requests" }} list={ClicksHistoryList} edit={ClicksHistoryEdit} />
-      <Resource name="payoutrequests" options={{ "label": "Payout Requests", "menuParent": "user_requests" }} list={PayoutRequestsList} create={PayoutRequestsCreate} edit={PayoutRequestsEdit} />
-      <Resource name="payoutrequests/bankpayouts" options={{ "label": "Bank Transfer-Paytm API", "menuParent": "user_requests" }} list={BankTransferList} edit={BankTransferEdit} />
-      <Resource name="payoutrequests/paytmwalletpayouts" options={{ "label": "Paytm Wallet Transfer", "menuParent": "user_requests" }} list={PaytmWalletTransferList} create={PaytmWalletTransferCreate} edit={PaytmWalletTransferEdit} />
-      <Resource name="payoutrequests/apiLog" options={{ "label": "Paytm API Log", "menuParent": "user_requests" }} list={PaytmApiLogList} create={PaytmApiLogCreate} edit={PaytmApiLogEdit} />
-      <Resource name="missingclaims" options={{ "label": "Missing Claims", "menuParent": "user_requests" }} list={MissingClaimsList} edit={MissingClaimsEdit} /> */}
+      <Resource
+        name="missingclaims"
+        options={{ label: "Missing Claims", menuParent: "user_requests" }}
+        list={MissingClaimsList}
+        edit={MissingClaimsEdit}
+      />
       {/* Users Information */}
       <Resource
         name="users_information"
