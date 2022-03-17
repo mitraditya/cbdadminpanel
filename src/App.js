@@ -51,15 +51,10 @@ import NetworkEarningList from "./components/BusinessReports/NetworkEarningList 
 import StoreEarningList from "./components/BusinessReports/StoreEarningList";
 import ProfitReportList from "./components/BusinessReports/ProfitReportList";
 
-const httpClient = (url, options = {}) => {
-  if (!options.headers) {
-    options.headers = new Headers({ Accept: "application/json" });
-  }
-  const { token } = JSON.parse(localStorage.getItem("auth"));
-  options.headers.set("Authorization", `${token}`);
-  return fetchUtils.fetchJson(url, options);
-};
-const dataProvider = restProvider(process.env.REACT_APP_BACKEND, httpClient);
+import StoreCategoryList from "./components/StoreCategory/StoreCategoryList";
+import StoreCategoryCreate from "./components/StoreCategory/StoreCategoryCreate";
+import StoreCategoryEdit from "./components/StoreCategory/StoreCategoryEdit";
+import dataProvider from "./dataProvider";
 
 function App() {
   return (
@@ -71,11 +66,33 @@ function App() {
       dataProvider={dataProvider}
     >
       {/* Stores */}
+      <Resource name="store" options={{ label: "Store", isMenuParent: true }} />
+      {/* Store Categories */}
+      <Resource
+        name="stores/category"
+        options={{ label: "Store Categories", menuParent: "store" }}
+        list={StoreCategoryList}
+        create={StoreCategoryCreate}
+        edit={StoreCategoryEdit}
+      />
       <Resource
         name="stores"
         list={StoreList}
         create={StoreCreate}
         edit={StoreEdit}
+        options={{ label: "Stores", menuParent: "store" }}
+      />
+      {/* Coupon Categories */}
+      <Resource
+        name="coupon"
+        options={{ label: "Coupon", isMenuParent: true }}
+      />
+      <Resource
+        name="stores/category"
+        options={{ label: "Store Categories", menuParent: "store" }}
+        list={StoreCategoryList}
+        create={StoreCategoryCreate}
+        edit={StoreCategoryEdit}
       />
       {/* Affiliate Networks */}
       <Resource
@@ -181,6 +198,20 @@ function App() {
         list={MissingClaimsList}
         edit={MissingClaimsEdit}
       />
+      <Resource
+        name="payoutrequests/apiLog"
+        options={{ label: "Paytm API Log", menuParent: "user_requests" }}
+        list={PaytmApiLogList}
+        create={PaytmApiLogCreate}
+        edit={PaytmApiLogEdit}
+      />
+      {/* <Resource name='user_requests' options={{ "label": "User Requests", "isMenuParent": true  }} />
+      <Resource name="clicks" options={{ "label": "Clicks History", "menuParent": "user_requests" }} list={ClicksHistoryList} edit={ClicksHistoryEdit} />
+      <Resource name="payoutrequests" options={{ "label": "Payout Requests", "menuParent": "user_requests" }} list={PayoutRequestsList} create={PayoutRequestsCreate} edit={PayoutRequestsEdit} />
+      <Resource name="payoutrequests/bankpayouts" options={{ "label": "Bank Transfer-Paytm API", "menuParent": "user_requests" }} list={BankTransferList} edit={BankTransferEdit} />
+      <Resource name="payoutrequests/paytmwalletpayouts" options={{ "label": "Paytm Wallet Transfer", "menuParent": "user_requests" }} list={PaytmWalletTransferList} create={PaytmWalletTransferCreate} edit={PaytmWalletTransferEdit} />
+      <Resource name="payoutrequests/apiLog" options={{ "label": "Paytm API Log", "menuParent": "user_requests" }} list={PaytmApiLogList} create={PaytmApiLogCreate} edit={PaytmApiLogEdit} />
+      <Resource name="missingclaims" options={{ "label": "Missing Claims", "menuParent": "user_requests" }} list={MissingClaimsList} edit={MissingClaimsEdit} /> */}
       {/* Users Information */}
       <Resource
         name="users_information"
@@ -198,7 +229,6 @@ function App() {
         list={PayoutModeList}
         edit={PayoutModeEdit}
       />
-
       <Resource
         name="business_report"
         options={{ label: "Business Reports", isMenuParent: true }}
@@ -213,7 +243,6 @@ function App() {
         options={{ label: "Earning By Stores", menuParent: "business_report" }}
         list={StoreEarningList}
       />
-
       <Resource
         name="earning/network"
         options={{
@@ -222,13 +251,11 @@ function App() {
         }}
         list={NetworkEarningList}
       />
-
       <Resource
         name="earning/user"
         options={{ label: "Earning By Users", menuParent: "business_report" }}
         list={UserEarningList}
       />
-
       {/* <Resource
         name="settings"
         list={StoreList}
