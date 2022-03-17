@@ -54,6 +54,12 @@ import StoreCategoryList from "./components/StoreCategory/StoreCategoryList";
 import StoreCategoryCreate from "./components/StoreCategory/StoreCategoryCreate";
 import StoreCategoryEdit from "./components/StoreCategory/StoreCategoryEdit";
 import dataProvider from "./dataProvider";
+import CouponCategoryList from "./components/Coupon/CouponCategory/CouponCategoryList";
+import CouponCategoryCreate from "./components/Coupon/CouponCategory/CouponCategoryCreate";
+import CouponCategoryEdit from "./components/Coupon/CouponCategory/CouponCategoryEdit";
+import CouponList from "./components/Coupon/Coupon/CouponList";
+import CouponCreate from "./components/Coupon/Coupon/CouponCreate";
+import CouponEdit from "./components/Coupon/Coupon/CouponEdit";
 
 function App() {
   return (
@@ -83,15 +89,22 @@ function App() {
       />
       {/* Coupon Categories */}
       <Resource
-        name="coupon"
-        options={{ label: "Coupon", isMenuParent: true }}
+        name="coupons"
+        options={{ label: "Coupons", isMenuParent: true }}
       />
       <Resource
-        name="stores/category"
-        options={{ label: "Store Categories", menuParent: "store" }}
-        list={StoreCategoryList}
-        create={StoreCategoryCreate}
-        edit={StoreCategoryEdit}
+        name="coupon"
+        options={{ label: "Coupon", menuParent: "coupons" }}
+        list={CouponList}
+        create={CouponCreate}
+        edit={CouponEdit}
+      />
+      <Resource
+        name="couponcategory"
+        options={{ label: "Coupon Categories", menuParent: "coupons" }}
+        list={CouponCategoryList}
+        create={CouponCategoryCreate}
+        edit={CouponCategoryEdit}
       />
       {/* Affiliate Networks */}
       <Resource
@@ -189,13 +202,6 @@ function App() {
         list={PaytmWalletTransferList}
         create={PaytmWalletTransferCreate}
         edit={PaytmWalletTransferEdit}
-      />
-      {/* <Resource name="payoutrequests" options={{ "label": "Paytm API Log", "menuParent": "user_requests" }} list={PaytmApiLogList} create={PaytmApiLogCreate} edit={PaytmApiLogEdit} /> */}
-      <Resource
-        name="missingclaims"
-        options={{ label: "Missing Claims", menuParent: "user_requests" }}
-        list={MissingClaimsList}
-        edit={MissingClaimsEdit}
       />
       <Resource
         name="payoutrequests/apiLog"

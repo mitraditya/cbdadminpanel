@@ -4,6 +4,7 @@ import {
   Datagrid,
   TextField,
   NumberField,
+  BooleanField,
   EditButton,
   DeleteButton,
 } from "react-admin";
@@ -13,12 +14,12 @@ const CouponCategoryList = (props) => {
     <List {...props}>
       <Datagrid rowClick="edit">
         <NumberField source="id" />
+        <BooleanField source="featured" />
+        <NumberField source="visits" />
         <TextField source="h1" label="h1" />
         <TextField source="h2" label="h2" />
-        <TextField source="featured" />
-        <TextField source="visits" />
-        <EditButton basePath="networks" />
-        <DeleteButton basePath="networks" />
+        <EditButton basePath="couponcategory" />
+        <DeleteButton basePath="couponcategory" />
       </Datagrid>
     </List>
   );

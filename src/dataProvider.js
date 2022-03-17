@@ -19,22 +19,42 @@ const myDataProvider = {
   ...dataProvider,
   create: (resource, params) => {
     console.log(resource, params);
-    if (resource !== "stores/category" || !params.data.image) {
+    if (resource === "stores/category" && params.data.image) {
       // fallback to the default implementation
-      return dataProvider.create(resource, params);
+      let formData = new FormData();
+
+      formData.append("name", params.data.name);
+      formData.append("slug", params.data.slug);
+      formData.append("image", params.data.image.rawFile);
+
+      return httpClient(`${process.env.REACT_APP_BACKEND}/${resource}`, {
+        method: "POST",
+        body: formData,
+      }).then(({ json }) => ({
+        data: { ...params.data, id: json.id },
+      }));
     }
-    let formData = new FormData();
+    if (resource === "couponcategory" && params.data.featured_image_url) {
+      // fallback to the default implementation
+      let formData = new FormData();
 
-    formData.append("name", params.data.name);
-    formData.append("slug", params.data.slug);
-    formData.append("image", params.data.image.rawFile);
+      formData.append("featured", params.data.featured);
+      formData.append("visits", params.data.visits);
+      formData.append("h1", params.data.h1);
+      formData.append("h2", params.data.h2);
+      formData.append(
+        "featured_image_url",
+        params.data.featured_image_url.rawFile
+      );
 
-    return httpClient(`${process.env.REACT_APP_BACKEND}/${resource}`, {
-      method: "POST",
-      body: formData,
-    }).then(({ json }) => ({
-      data: { ...params.data, id: json.id },
-    }));
+      return httpClient(`${process.env.REACT_APP_BACKEND}/${resource}`, {
+        method: "POST",
+        body: formData,
+      }).then(({ json }) => ({
+        data: { ...params.data, id: json.id },
+      }));
+    }
+    return dataProvider.create(resource, params);
   },
 };
 
