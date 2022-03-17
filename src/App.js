@@ -61,6 +61,7 @@ function App() {
     >
       {/* Stores */}
       <Resource name="store" options={{ label: "Store", isMenuParent: true }} />
+      {/* Store Categories */}
       <Resource
         name="stores/category"
         options={{ label: "Store Categories", menuParent: "store" }}
@@ -75,7 +76,19 @@ function App() {
         edit={StoreEdit}
         options={{ label: "Stores", menuParent: "store" }}
       />
-      {/* Store Categories */}
+      {/* Coupon Categories */}
+      <Resource
+        name="coupon"
+        options={{ label: "Coupon", isMenuParent: true }}
+      />
+      <Resource
+        name="stores/category"
+        options={{ label: "Store Categories", menuParent: "store" }}
+        list={StoreCategoryList}
+        create={StoreCategoryCreate}
+        edit={StoreCategoryEdit}
+      />
+
       {/* Affiliate Networks */}
       <Resource
         name="affiliate_networks"
