@@ -12,7 +12,7 @@ import {
 
 const choices = [
   { id: "Cashback", name: "Cashback" },
-  { id: "Reward", name: "Reward" }
+  { id: "Reward", name: "Reward" },
 ];
 
 const StoreEdit = (props) => {
@@ -23,7 +23,7 @@ const StoreEdit = (props) => {
         <TextInput source="name" />
         <TextInput multiline source="homepage" />
         <TextInput multiline source="affiliate_link" />
-        <TextInput source="network_id" label="Network Id"/>
+        <TextInput source="network_id.name" label="Network Id" />
         <BooleanInput label="Featured" source="featured" />
         <BooleanInput label="Cashback Enabled" source="cashback_enabled" />
         <NumberInput source="cashback_percent" />
@@ -45,7 +45,7 @@ const StoreEdit = (props) => {
         <TextInput source="h2" />
         <TextInput source="description" />
         <ImageInput source="image" accept="image/*">
-            <ImageField source="image" title="Image" />
+          <ImageField source="image" title="Image" />
         </ImageInput>
         <TextInput source="network_campaign_id" label="Network Campaign Id" />
         <NumberInput source="coupon_count" />

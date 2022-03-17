@@ -9,6 +9,7 @@ import {
   ImageField,
   ImageInput,
   required,
+  AutocompleteArrayInput,
 } from "react-admin";
 
 const choices = [
@@ -16,31 +17,51 @@ const choices = [
   { id: "Reward", name: "Reward" },
 ];
 
+const getNetworks = async () => {
+  try {
+    const { token } = JSON.parse(localStorage.getItem("auth"));
+    const res = await fetch(`${process.env.REACT_APP_BACKEND}/networks/`, {
+      headers: {
+        Authorization: token,
+      },
+    });
+    const networks = await res.json();
+    console.log(networks);
+    return networks;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const getCategories = async () => {
+  try {
+    const { token } = JSON.parse(localStorage.getItem("auth"));
+    const res = await fetch(
+      `${process.env.REACT_APP_BACKEND}/stores/category`,
+      {
+        headers: { Authorization: token },
+      }
+    );
+    const categories = await res.json();
+    console.log(categories);
+    return categories;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 const StoreCreate = (props) => {
   const [networks, setNetworks] = useState([]);
   const [loaded, setLoaded] = useState(false);
-
-  const getNetworks = async () => {
-    try {
-      const { token } = JSON.parse(localStorage.getItem("auth"));
-      const res = await fetch(`${process.env.REACT_APP_BACKEND}/networks/`, {
-        headers: {
-          Authorization: token,
-        },
-      });
-      const networks = await res.json();
-      console.log(networks);
-      return networks;
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     console.log("USe Effect ran");
     const load = async () => {
       const networks = await getNetworks();
       setNetworks(networks);
+      const categories = await getCategories();
+      setCategories(categories);
       setLoaded(true);
     };
     load();
@@ -57,11 +78,6 @@ const StoreCreate = (props) => {
               source="affiliate_link"
               validate={required()}
             />
-            {/* <TextInput
-          source="network_id"
-          label="Network Id"
-          validate={required()}
-        /> */}
             <AutocompleteInput
               source="network_id"
               choices={networks}
@@ -106,6 +122,12 @@ const StoreCreate = (props) => {
             <TextInput source="status" validate={required()} />
             <TextInput source="color1" />
             <TextInput source="color2" />
+            <AutocompleteArrayInput
+              source="categories"
+              choices={categories}
+              optionText="name"
+              optionValue="id"
+            />
           </SimpleForm>
         </Create>
       )}
