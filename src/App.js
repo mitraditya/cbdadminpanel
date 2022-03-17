@@ -61,6 +61,7 @@ function App() {
     >
       {/* Stores */}
       <Resource name="store" options={{ label: "Store", isMenuParent: true }} />
+      {/* Store Categories */}
       <Resource
         name="stores/category"
         options={{ label: "Store Categories", menuParent: "store" }}
@@ -75,7 +76,19 @@ function App() {
         edit={StoreEdit}
         options={{ label: "Stores", menuParent: "store" }}
       />
-      {/* Store Categories */}
+      {/* Coupon Categories */}
+      <Resource
+        name="coupon"
+        options={{ label: "Coupon", isMenuParent: true }}
+      />
+      <Resource
+        name="stores/category"
+        options={{ label: "Store Categories", menuParent: "store" }}
+        list={StoreCategoryList}
+        create={StoreCategoryCreate}
+        edit={StoreCategoryEdit}
+      />
+
       {/* Affiliate Networks */}
       <Resource
         name="affiliate_networks"
@@ -137,49 +150,13 @@ function App() {
         edit={ReferrerTransactionsEdit}
       />
       {/* User Requests */}
-      <Resource
-        name="user_requests"
-        options={{ label: "User Requests", isMenuParent: true }}
-      />
-      <Resource
-        name="clicks"
-        options={{ label: "Clicks History", menuParent: "user_requests" }}
-        list={ClicksHistoryList}
-        edit={ClicksHistoryEdit}
-      />
-      <Resource
-        name="payoutrequests"
-        options={{ label: "Payout Requests", menuParent: "user_requests" }}
-        list={PayoutRequestsList}
-        create={PayoutRequestsCreate}
-        edit={PayoutRequestsEdit}
-      />
-      <Resource
-        name="payoutrequests/bankpayouts"
-        options={{
-          label: "Bank Transfer-Paytm API",
-          menuParent: "user_requests",
-        }}
-        list={BankTransferList}
-        edit={BankTransferEdit}
-      />
-      <Resource
-        name="payoutrequests/paytmwalletpayouts"
-        options={{
-          label: "Paytm Wallet Transfer",
-          menuParent: "user_requests",
-        }}
-        list={PaytmWalletTransferList}
-        create={PaytmWalletTransferCreate}
-        edit={PaytmWalletTransferEdit}
-      />
-      {/* <Resource name="payoutrequests" options={{ "label": "Paytm API Log", "menuParent": "user_requests" }} list={PaytmApiLogList} create={PaytmApiLogCreate} edit={PaytmApiLogEdit} /> */}
-      <Resource
-        name="missingclaims"
-        options={{ label: "Missing Claims", menuParent: "user_requests" }}
-        list={MissingClaimsList}
-        edit={MissingClaimsEdit}
-      />
+      <Resource name='user_requests' options={{ "label": "User Requests", "isMenuParent": true  }} />
+      <Resource name="clicks" options={{ "label": "Clicks History", "menuParent": "user_requests" }} list={ClicksHistoryList} edit={ClicksHistoryEdit} />
+      <Resource name="payoutrequests" options={{ "label": "Payout Requests", "menuParent": "user_requests" }} list={PayoutRequestsList} create={PayoutRequestsCreate} edit={PayoutRequestsEdit} />
+      <Resource name="payoutrequests/bankpayouts" options={{ "label": "Bank Transfer-Paytm API", "menuParent": "user_requests" }} list={BankTransferList} edit={BankTransferEdit} />
+      <Resource name="payoutrequests/paytmwalletpayouts" options={{ "label": "Paytm Wallet Transfer", "menuParent": "user_requests" }} list={PaytmWalletTransferList} create={PaytmWalletTransferCreate} edit={PaytmWalletTransferEdit} />
+      <Resource name="payoutrequests/apiLog" options={{ "label": "Paytm API Log", "menuParent": "user_requests" }} list={PaytmApiLogList} create={PaytmApiLogCreate} edit={PaytmApiLogEdit} />
+      <Resource name="missingclaims" options={{ "label": "Missing Claims", "menuParent": "user_requests" }} list={MissingClaimsList} edit={MissingClaimsEdit} />
       {/* Users Information */}
       <Resource
         name="users_information"
@@ -200,5 +177,6 @@ function App() {
     </Admin>
   );
 }
+
 
 export default App;
