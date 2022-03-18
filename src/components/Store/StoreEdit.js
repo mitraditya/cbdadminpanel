@@ -95,7 +95,7 @@ const StoreEdit = (props) => {
             <TextInput source="color1" />
             <TextInput source="color2" />
             <AutocompleteArrayInput
-              source="categories"
+              source="categories" 
               choices={categories}
               optionText="name"
               optionValue="id"

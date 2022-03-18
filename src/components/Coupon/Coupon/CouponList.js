@@ -16,8 +16,8 @@ const CouponList = (props) => {
         <TextField source="discount" />
         <TextField source="coupon_code" /> 
         <TextField source="link" /> 
-        <NumberField source="store_id" label="Store Id" />
-        <NumberField source="network_id" label="Network Id" />
+        <NumberField source="store_id.name" label="Store" />
+        <NumberField source="network_id.name" label="Network" />
         <EditButton basePath="coupon" />
         <DeleteButton basePath="coupon" />
       </Datagrid>

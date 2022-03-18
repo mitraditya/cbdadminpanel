@@ -93,18 +93,18 @@ function App() {
         options={{ label: "Coupons", isMenuParent: true }}
       />
       <Resource
+        name="coupon/couponcategory"
+        options={{ label: "Coupon Categories", menuParent: "coupons" }}
+        list={CouponCategoryList}
+        create={CouponCategoryCreate}
+        edit={CouponCategoryEdit}
+      />
+      <Resource
         name="coupon"
         options={{ label: "Coupon", menuParent: "coupons" }}
         list={CouponList}
         create={CouponCreate}
         edit={CouponEdit}
-      />
-      <Resource
-        name="couponcategory"
-        options={{ label: "Coupon Categories", menuParent: "coupons" }}
-        list={CouponCategoryList}
-        create={CouponCategoryCreate}
-        edit={CouponCategoryEdit}
       />
       {/* Affiliate Networks */}
       <Resource
