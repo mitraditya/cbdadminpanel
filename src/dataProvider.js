@@ -54,6 +54,23 @@ const myDataProvider = {
         data: { ...params.data, id: json.id },
       }));
     }
+    if (resource === "banner" && params.data.image) {
+      // fallback to the default implementation
+      let formData = new FormData();
+
+      formData.append("link", params.data.link);
+      formData.append(
+        "image",
+        params.data.image.rawFile
+      );
+
+      return httpClient(`${process.env.REACT_APP_BACKEND}/${resource}`, {
+        method: "POST",
+        body: formData,
+      }).then(({ json }) => ({
+        data: { ...params.data, id: json.id },
+      }));
+    }
     return dataProvider.create(resource, params);
   },
 };
