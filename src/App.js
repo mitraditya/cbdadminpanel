@@ -60,6 +60,7 @@ import CouponCategoryEdit from "./components/Coupon/CouponCategory/CouponCategor
 import CouponList from "./components/Coupon/Coupon/CouponList";
 import CouponCreate from "./components/Coupon/Coupon/CouponCreate";
 import CouponEdit from "./components/Coupon/Coupon/CouponEdit";
+import Referral, { ReferralCreate, ReferralEdit, ReferralList } from "./components/Settings/Referral";
 
 function App() {
   return (
@@ -260,12 +261,17 @@ function App() {
         options={{ label: "Earning By Users", menuParent: "business_report" }}
         list={UserEarningList}
       />
-      {/* <Resource
+      <Resource
+        name="settingss"
+        options={{ label: "Settings", isMenuParent: true }}
+      />
+       <Resource
         name="settings"
-        list={StoreList}
-        create={StoreCreate}
-        edit={StoreEdit}
-      /> */}
+        options={{ label: "Referral", menuParent: "settingss" }}
+        list={ReferralList}
+        create={ReferralCreate}
+        edit={ReferralEdit}
+      />
     </Admin>
   );
 }
