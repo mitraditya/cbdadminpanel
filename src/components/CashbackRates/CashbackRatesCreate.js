@@ -48,7 +48,7 @@ const CashbackRatesCreate = (props) => {
           <SimpleForm>
             <TextInput source="title" />
             <AutocompleteInput
-              source="amount_type"
+              source="amountType"
               choices={choices}
               optionText="name"
               optionValue="id"
@@ -57,7 +57,7 @@ const CashbackRatesCreate = (props) => {
             <BooleanInput source="manual" />
             <BooleanInput source="enabled" />
             <AutocompleteInput
-              source="store_id"
+              source="store"
               choices={stores}
               optionText="name"
               optionValue="id"
