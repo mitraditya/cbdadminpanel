@@ -60,6 +60,9 @@ import CouponCategoryEdit from "./components/Coupon/CouponCategory/CouponCategor
 import CouponList from "./components/Coupon/Coupon/CouponList";
 import CouponCreate from "./components/Coupon/Coupon/CouponCreate";
 import CouponEdit from "./components/Coupon/Coupon/CouponEdit";
+import CashbackRatesList from "./components/CashbackRates/CashbackRatesList";
+import CashbackRatesCreate from "./components/CashbackRates/CashbackRatesCreate";
+import CashbackRatesEdit from "./components/CashbackRates/CashbackRatesEdit";
 
 function App() {
   return (
@@ -86,6 +89,13 @@ function App() {
         create={StoreCreate}
         edit={StoreEdit}
         options={{ label: "Stores", menuParent: "store" }}
+      />
+      <Resource
+        name="cashbackRates"
+        list={CashbackRatesList}
+        create={CashbackRatesCreate}
+        edit={CashbackRatesEdit}
+        options={{ label: "Cashback Rates", menuParent: "store" }}
       />
       {/* Coupon Categories */}
       <Resource
