@@ -63,6 +63,8 @@ import CouponEdit from "./components/Coupon/Coupon/CouponEdit";
 import CashbackRatesList from "./components/CashbackRates/CashbackRatesList";
 import CashbackRatesCreate from "./components/CashbackRates/CashbackRatesCreate";
 import CashbackRatesEdit from "./components/CashbackRates/CashbackRatesEdit";
+import BannerList from "./components/Banner/BannerList";
+import BannerCreate from "./components/Banner/BannerCreate";
 
 function App() {
   return (
@@ -188,13 +190,6 @@ function App() {
         edit={ClicksHistoryEdit}
       />
       <Resource
-        name="payoutrequests"
-        options={{ label: "Payout Requests", menuParent: "user_requests" }}
-        list={PayoutRequestsList}
-        create={PayoutRequestsCreate}
-        edit={PayoutRequestsEdit}
-      />
-      <Resource
         name="payoutrequests/bankpayouts"
         options={{
           label: "Bank Transfer-Paytm API",
@@ -219,6 +214,13 @@ function App() {
         list={PaytmApiLogList}
         create={PaytmApiLogCreate}
         edit={PaytmApiLogEdit}
+      />
+      <Resource
+        name="payoutrequests"
+        options={{ label: "Payout Requests", menuParent: "user_requests" }}
+        list={PayoutRequestsList}
+        create={PayoutRequestsCreate}
+        edit={PayoutRequestsEdit}
       />
       <Resource
         name="missingclaims"
@@ -270,6 +272,8 @@ function App() {
         options={{ label: "Earning By Users", menuParent: "business_report" }}
         list={UserEarningList}
       />
+      <Resource name="banners" options={{ label: "Banners", isMenuParent: true }} />
+      <Resource name="banner" options={{ label: "Banner", menuParent: "banners"}} list={BannerList} create={BannerCreate} />
       {/* <Resource
         name="settings"
         list={StoreList}
