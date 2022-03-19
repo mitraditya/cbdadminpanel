@@ -12,6 +12,9 @@ import {
   AutocompleteArrayInput,
 } from "react-admin";
 
+import { ColorInput } from "react-admin-color-input";
+import RichTextInput from "ra-input-rich-text";
+
 const choices = [
   { id: "Cashback", name: "Cashback" },
   { id: "Reward", name: "Reward" },
@@ -98,13 +101,13 @@ const StoreCreate = (props) => {
             <TextInput source="rate_type" />
             <TextInput source="cashback_was" />
             <TextInput source="tracking_speed" />
-            <NumberInput source="visits" validate={required()} />
-            <TextInput source="terms" />
-            <TextInput source="tips" />
+            {/* <NumberInput source="visits" validate={required()} /> */}
+            <RichTextInput source="terms" />
+            <RichTextInput source="tips" />
             <TextInput source="h1" />
             <TextInput source="h2" />
             <TextInput source="description" />
-            <ImageInput source="image" accept="image/*">
+            <ImageInput source="image" accept="image/*" validate={required()}>
               <ImageField source="image" title="Image" />
             </ImageInput>
             <TextInput
@@ -112,7 +115,7 @@ const StoreCreate = (props) => {
               label="Network Campaign Id"
             />
             <NumberInput source="coupon_count" />
-            <NumberInput source="clicks" />
+            {/* <NumberInput source="clicks" /> */}
             <NumberInput source="payout_days" />
             <BooleanInput source="is_claimable" />
             <TextInput source="domain_name" />
@@ -120,8 +123,8 @@ const StoreCreate = (props) => {
             <TextInput source="checkout_url" />
             <TextInput source="slug" validate={required()} />
             <TextInput source="status" validate={required()} />
-            <TextInput source="color1" />
-            <TextInput source="color2" />
+            <ColorInput source="color1" validate={required()} />
+            <ColorInput source="color2" validate={required()} />
             <AutocompleteArrayInput
               source="categories"
               choices={categories}

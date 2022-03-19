@@ -8,13 +8,33 @@ import {
   AutocompleteInput,
   ImageField,
   ImageInput,
+  required,
   AutocompleteArrayInput,
 } from "react-admin";
+
+import { ColorInput } from "react-admin-color-input";
+import RichTextInput from "ra-input-rich-text";
 
 const choices = [
   { id: "Cashback", name: "Cashback" },
   { id: "Reward", name: "Reward" },
 ];
+
+const getNetworks = async () => {
+  try {
+    const { token } = JSON.parse(localStorage.getItem("auth"));
+    const res = await fetch(`${process.env.REACT_APP_BACKEND}/networks/`, {
+      headers: {
+        Authorization: token,
+      },
+    });
+    const networks = await res.json();
+    console.log(networks);
+    return networks;
+  } catch (err) {
+    console.log(err);
+  }
+};
 
 const getCategories = async () => {
   try {
@@ -34,12 +54,15 @@ const getCategories = async () => {
 };
 
 const StoreEdit = (props) => {
+  const [networks, setNetworks] = useState([]);
   const [loaded, setLoaded] = useState(false);
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     console.log("USe Effect ran");
     const load = async () => {
+      const networks = await getNetworks();
+      setNetworks(networks);
       const categories = await getCategories();
       setCategories(categories);
       setLoaded(true);
@@ -49,13 +72,21 @@ const StoreEdit = (props) => {
   return (
     <Fragment>
       {loaded && (
-        <Edit title="Edit Store" {...props}>
+        <Edit title="Edit a Store" {...props}>
           <SimpleForm>
-            <NumberInput disabled source="id" />
-            <TextInput source="name" />
-            <TextInput multiline source="homepage" />
-            <TextInput multiline source="affiliate_link" />
-            <TextInput source="network_id.name" label="Network Id" />
+            <TextInput source="name" validate={required()} />
+            <TextInput multiline source="homepage" validate={required()} />
+            <TextInput
+              multiline
+              source="affiliate_link"
+              validate={required()}
+            />
+            <AutocompleteInput
+              source="network_id"
+              choices={networks}
+              optionText="name"
+              optionValue="id"
+            />
             <BooleanInput label="Featured" source="featured" />
             <BooleanInput label="Cashback Enabled" source="cashback_enabled" />
             <NumberInput source="cashback_percent" />
@@ -70,13 +101,13 @@ const StoreEdit = (props) => {
             <TextInput source="rate_type" />
             <TextInput source="cashback_was" />
             <TextInput source="tracking_speed" />
-            <NumberInput source="visits" />
-            <TextInput source="terms" />
-            <TextInput source="tips" />
+            {/* <NumberInput source="visits" validate={required()} /> */}
+            <RichTextInput source="terms" />
+            <RichTextInput source="tips" />
             <TextInput source="h1" />
             <TextInput source="h2" />
             <TextInput source="description" />
-            <ImageInput source="image" accept="image/*">
+            <ImageInput source="image" accept="image/*" validate={required()}>
               <ImageField source="image" title="Image" />
             </ImageInput>
             <TextInput
@@ -84,18 +115,18 @@ const StoreEdit = (props) => {
               label="Network Campaign Id"
             />
             <NumberInput source="coupon_count" />
-            <NumberInput source="clicks" />
+            {/* <NumberInput source="clicks" /> */}
             <NumberInput source="payout_days" />
             <BooleanInput source="is_claimable" />
             <TextInput source="domain_name" />
             <TextInput source="apply_coupon" />
             <TextInput source="checkout_url" />
-            <TextInput source="slug" />
-            <TextInput source="status" />
-            <TextInput source="color1" />
-            <TextInput source="color2" />
+            <TextInput source="slug" validate={required()} />
+            <TextInput source="status" validate={required()} />
+            <ColorInput source="color1" validate={required()} />
+            <ColorInput source="color2" validate={required()} />
             <AutocompleteArrayInput
-              source="categories" 
+              source="categories"
               choices={categories}
               optionText="name"
               optionValue="id"
