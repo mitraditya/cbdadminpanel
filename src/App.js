@@ -60,7 +60,7 @@ import CouponCategoryEdit from "./components/Coupon/CouponCategory/CouponCategor
 import CouponList from "./components/Coupon/Coupon/CouponList";
 import CouponCreate from "./components/Coupon/Coupon/CouponCreate";
 import CouponEdit from "./components/Coupon/Coupon/CouponEdit";
-import Referral, { ReferralCreate, ReferralEdit, ReferralList } from "./components/Settings/Referral";
+//import Referral, { ReferralCreate, ReferralEdit, ReferralList } from "./components/Settings/Referral";
 import CashbackRatesList from "./components/CashbackRates/CashbackRatesList";
 import CashbackRatesCreate from "./components/CashbackRates/CashbackRatesCreate";
 import CashbackRatesEdit from "./components/CashbackRates/CashbackRatesEdit";

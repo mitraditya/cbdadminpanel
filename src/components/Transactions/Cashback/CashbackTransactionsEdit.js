@@ -21,7 +21,6 @@ const CashbackTransactionsEdit = (props) => {
         <NumberInput source="cashback" />
         <TextInput source="currency" />
         <TextInput source="status" />
-        <TextInput source="txn_date_time" />
         <BooleanInput source="mail_sent" />
       </SimpleForm>
     </Edit>

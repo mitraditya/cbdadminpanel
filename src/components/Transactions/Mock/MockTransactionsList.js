@@ -1,6 +1,6 @@
-import { Box, Icon, IconButton, Modal, Typography } from '@material-ui/core';
+import { Box, Modal, Typography } from '@material-ui/core';
 import React, { useState } from 'react';
-import { List, Datagrid, TextField, NumberField, EditButton, DeleteButton, TopToolbar, Button, CreateButton, ExportButton, FileInput, SimpleForm, FileField } from "react-admin";
+import { List, Datagrid, TextField, NumberField, DateField, EditButton, DeleteButton, TopToolbar, Button, CreateButton, ExportButton } from "react-admin";
 
 const MockTransactionsList = (props) => {
 
@@ -99,12 +99,12 @@ const MockTransactionsList = (props) => {
     <Datagrid rowClick="edit">
       <NumberField source='id' />
       <TextField source='network_id.name' label='Network' />
-      <TextField source='sale_date' />
+      <DateField source='sale_date' />
       <NumberField source='sale_amount' />
       <NumberField source='base_commission' />
       <TextField source='status' />
       <NumberField source='aff_sub1' />
-      <TextField source='updated_at' />
+      <DateField source='updated_at' />
       <EditButton basePath='mock' />
       <DeleteButton basePath='mock' />
     </Datagrid>

@@ -4,6 +4,7 @@ import {
   SimpleForm,
   TextInput,
   NumberInput,
+  DateInput,
   required,
 } from "react-admin";
 
@@ -16,8 +17,8 @@ const SalesTransactionsCreate = (props) => {
         <TextInput source='transaction_id' label='Transaction Id' validate={required()} />
         <TextInput source='commission_id' label='Commission Id' />
         <TextInput source='order_id' label='Order Id' validate={required()} />
-        <TextInput source='click_date' />
-        <TextInput source='sale_date' />
+        <DateInput source='click_date' />
+        <DateInput source='sale_date' />
         <NumberInput source='sale_amount' validate={required()} />
         <NumberInput source='base_commission' validate={required()} />
         <NumberInput source='commission_amount' validate={required()} />

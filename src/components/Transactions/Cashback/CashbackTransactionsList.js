@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, Datagrid, TextField, NumberField, EditButton, DeleteButton } from "react-admin";
+import { List, Datagrid, TextField, NumberField, DateField, EditButton, DeleteButton } from "react-admin";
 
 const CashbackTransactionsList = (props) => {
   return <List {...props}>
@@ -11,7 +11,7 @@ const CashbackTransactionsList = (props) => {
         <NumberField source='click_id.id' />
         <NumberField source='cashback' />
         <TextField source='status' />
-        <TextField source='updated_at' />
+        <DateField source='updated_at' />
         <EditButton basePath='txn/cashback' />
         <DeleteButton basePath='txn/cashback' />
     </Datagrid>

@@ -34,10 +34,11 @@ const myDataProvider = {
         data: { ...params.data, id: json.id },
       }));
     }
-    if (resource === "couponcategory" && params.data.featured_image_url) {
+    if (resource === "coupon/couponcategory" && params.data.featured_image_url) {
       // fallback to the default implementation
       let formData = new FormData();
 
+      if(params.data.featured)
       formData.append("featured", params.data.featured);
       formData.append("visits", params.data.visits);
       formData.append("h1", params.data.h1);

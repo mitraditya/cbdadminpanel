@@ -4,6 +4,7 @@ import {
   SimpleForm,
   TextInput,
   NumberInput,
+  DateInput
 } from "react-admin";
 
 const MockTransactionsEdit = (props) => {
@@ -15,7 +16,7 @@ const MockTransactionsEdit = (props) => {
         <TextInput source='transaction_id' label='Transaction Id' />
         <TextInput source='commission_id' label='Commission Id' />
         <TextInput source='order_id' label='Order Id' />
-        <TextInput source='sale_date' />
+        <DateInput source='sale_date' />
         <NumberInput source='sale_amount' />
         <NumberInput source='base_commission' />
         <TextInput source='currency' />

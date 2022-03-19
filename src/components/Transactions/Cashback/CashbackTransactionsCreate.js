@@ -22,7 +22,6 @@ const CashbackTransactionsCreate = (props) => {
         <NumberInput source='cashback' validate={required()} />
         <TextInput source='currency' />
         <TextInput source='status' />
-        <TextInput source='txn_date_time' />
         <BooleanInput source='mail_sent' />
       </SimpleForm>
     </Create>

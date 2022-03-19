@@ -4,6 +4,7 @@ import {
   SimpleForm,
   TextInput,
   NumberInput,
+  DateInput,
   required
 } from "react-admin";
 
@@ -14,8 +15,8 @@ const BonusTransactionsCreate = (props) => {
         <TextInput source='user' validate={required()} />
         <TextInput source='bonus_code' label='Bonus Type' validate={required()} />
         <NumberInput source='amount' validate={required()} />
-        <TextInput source='awarded_on' validate={required()} />
-        <TextInput source='expires_on' />
+        <DateInput source='awarded_on' validate={required()} />
+        <DateInput source='expires_on' />
         <TextInput source='status' />
       </SimpleForm>
     </Create>
