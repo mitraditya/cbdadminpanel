@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { List, Datagrid, TextField, NumberField, EditButton, DeleteButton, BulkDeleteButton, Button } from "react-admin";
+import { List, Datagrid, TextField, NumberField, DateField, EditButton, DeleteButton, BulkDeleteButton, Button } from "react-admin";
 
 const PayoutBulkActionsButton = (props) => {
   const updatePayouts = async () => {
@@ -33,8 +33,8 @@ const PayoutRequestsList = (props) => {
         <NumberField source='cashback_amount' />
         <TextField source='status' />
         <TextField source='payment_ref_num' />
-        <TextField source='paid_at' />
-        <TextField source='updated_at' />
+        <DateField source='paid_at' />
+        <DateField source='updated_at' />
         <EditButton basePath='payoutrequests' />
         <DeleteButton basePath='payoutrequests' />
     </Datagrid>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, Datagrid, TextField, NumberField, BooleanField } from "react-admin";
+import { List, Datagrid, TextField, NumberField, BooleanField, DateField, EditButton } from "react-admin";
 
 const PayoutModeList = (props) => {
   return <List {...props}>
@@ -9,7 +9,8 @@ const PayoutModeList = (props) => {
         <TextField source='name' />
         <TextField source='account' />
         <BooleanField source='enabled' />
-        <TextField source='updated_at' />
+        <DateField source='updated_at' />
+        <EditButton basePath="mode" />
     </Datagrid>
   </List>;
 };

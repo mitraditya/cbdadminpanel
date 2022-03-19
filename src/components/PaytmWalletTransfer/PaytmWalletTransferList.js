@@ -1,18 +1,17 @@
 import React from 'react';
-import { List, Datagrid, TextField, NumberField, EditButton, DeleteButton } from "react-admin";
+import { List, Datagrid, TextField, NumberField, DateField, DeleteButton } from "react-admin";
 
 const PaytmWalletTransferList = (props) => {
   return <List {...props}>
-    <Datagrid rowClick="edit">
+    <Datagrid>
         <NumberField source='id' />
         <TextField source='payment_id' label='Payment Id'/>
         <TextField source='user_id.email' label='User'/>
-        <TextField source='payment_mode' label='Method Code' />
+        <TextField source='payment_mode.method_code' label='Method Code' />
         <NumberField source='cashback_amount' />
         <TextField source='status' />
         <TextField source='paid_at' />
-        <TextField source='updated_at' />
-        <EditButton basePath='payoutrequests' />
+        <DateField source='updated_at' />
         <DeleteButton basePath='payoutrequests' />
     </Datagrid>
   </List>;

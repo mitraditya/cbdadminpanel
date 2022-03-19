@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, Datagrid, TextField, NumberField, EditButton, DeleteButton } from "react-admin";
+import { List, Datagrid, TextField, NumberField, DateField, EditButton, DeleteButton } from "react-admin";
 
 const SnELinksList = (props) => {
   return <List {...props}>
@@ -8,7 +8,7 @@ const SnELinksList = (props) => {
         <TextField source='store.name' />
         <NumberField source='clicks' />
         <NumberField source='earning' />
-        <TextField source='createdAt' />
+        <DateField source='createdAt' />
         <EditButton basePath='links' />
         <DeleteButton basePath='links' />
     </Datagrid>

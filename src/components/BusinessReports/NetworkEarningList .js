@@ -4,7 +4,6 @@ import {
   Datagrid,
   TextField,
   NumberField,
-  BooleanField,
 } from "react-admin";
 
 const NetworkEarningList = (props) => {

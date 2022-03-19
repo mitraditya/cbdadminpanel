@@ -27,18 +27,13 @@ import BonusTransactionsEdit from "./components/Transactions/Bonus/BonusTransact
 import ReferrerTransactionsList from "./components/Transactions/Referrer/ReferrerTransactionsList";
 import ReferrerTransactionsEdit from "./components/Transactions/Referrer/ReferrerTransactionsEdit";
 import ClicksHistoryList from "./components/Clicks/ClicksHistoryList";
-import ClicksHistoryEdit from "./components/Clicks/ClicksHistoryEdit";
 import PayoutRequestsList from "./components/PayoutRequests/PayoutRequestsList";
 import PayoutRequestsCreate from "./components/PayoutRequests/PayoutRequestsCreate";
 import PayoutRequestsEdit from "./components/PayoutRequests/PayoutRequestsEdit";
 import BankTransferList from "./components/BankTransfer/BankTransferList";
-import BankTransferEdit from "./components/BankTransfer/BankTransferEdit";
 import PaytmWalletTransferList from "./components/PaytmWalletTransfer/PaytmWalletTransferList";
 import PaytmWalletTransferCreate from "./components/PaytmWalletTransfer/PaytmWalletTransferCreate";
-import PaytmWalletTransferEdit from "./components/PaytmWalletTransfer/PaytmWalletTransferEdit";
 import PaytmApiLogList from "./components/PaytmApiLog/PaytmApiLogList";
-import PaytmApiLogCreate from "./components/PaytmApiLog/PaytmApiLogCreate";
-import PaytmApiLogEdit from "./components/PaytmApiLog/PaytmApiLogEdit";
 import MissingClaimsList from "./components/MissingClaims/MissingClaimsList";
 import MissingClaimsEdit from "./components/MissingClaims/MissingClaimsEdit";
 import SnELinksList from "./components/SnELinks/SnELinksList";
@@ -188,7 +183,6 @@ function App() {
         name="clicks"
         options={{ label: "Clicks History", menuParent: "user_requests" }}
         list={ClicksHistoryList}
-        edit={ClicksHistoryEdit}
       />
       <Resource
         name="payoutrequests/bankpayouts"
@@ -197,7 +191,6 @@ function App() {
           menuParent: "user_requests",
         }}
         list={BankTransferList}
-        edit={BankTransferEdit}
       />
       <Resource
         name="payoutrequests/paytmwalletpayouts"
@@ -207,14 +200,11 @@ function App() {
         }}
         list={PaytmWalletTransferList}
         create={PaytmWalletTransferCreate}
-        edit={PaytmWalletTransferEdit}
       />
       <Resource
         name="payoutrequests/apiLog"
         options={{ label: "Paytm API Log", menuParent: "user_requests" }}
         list={PaytmApiLogList}
-        create={PaytmApiLogCreate}
-        edit={PaytmApiLogEdit}
       />
       <Resource
         name="payoutrequests"
