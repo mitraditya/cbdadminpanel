@@ -6,7 +6,7 @@ const PayoutRequestsList = (props) => {
     <Datagrid rowClick="edit">
         <NumberField source='id' />
         <TextField source='user_id.email' label='User'/>
-        <TextField source='payment_mode' label='Method' />
+        <TextField source='payment_mode.method_code' label='Method' />
         <NumberField source='cashback_amount' />
         <TextField source='status' />
         <TextField source='payment_ref_num' />
