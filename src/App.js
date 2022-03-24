@@ -267,9 +267,16 @@ function App() {
         name="settingss"
         options={{ label: "Settings", isMenuParent: true }}
       />
-      <Resource name="banners" options={{ label: "Banners", isMenuParent: true }} />
-      <Resource name="banner" options={{ label: "Banner", menuParent: "banners"}} list={BannerList} create={BannerCreate} />
-    
+      <Resource
+        name="banners"
+        options={{ label: "Banners", isMenuParent: true }}
+      />
+      <Resource
+        name="banner"
+        options={{ label: "Banner", menuParent: "banners" }}
+        list={BannerList}
+        create={BannerCreate}
+      />
     </Admin>
   );
 }
