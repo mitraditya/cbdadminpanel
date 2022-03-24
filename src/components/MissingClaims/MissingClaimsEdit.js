@@ -5,6 +5,7 @@ import {
   TextInput,
   NumberInput,
   AutocompleteInput,
+  FunctionField,
 } from "react-admin";
 
 const closedByChoices = [
@@ -39,6 +40,17 @@ const MissingClaimsEdit = (props) => {
         <TextInput source="currency_iso" />
         <NumberInput source="order_amount" />
         <TextInput source="transaction_date" />
+        <FunctionField
+          source="image"
+          render={(record) => (
+            <img
+              src={`${process.env.REACT_APP_BACKEND}/${record.image}`}
+              title="image"
+              alt=""
+              style={{ height: "300px" }}
+            />
+          )}
+        />
         <AutocompleteInput
           source="platform"
           choices={platformChoices}

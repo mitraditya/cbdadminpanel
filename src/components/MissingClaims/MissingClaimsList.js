@@ -10,7 +10,6 @@ const MissingClaimsList = (props) => {
         <TextField source="store_id.name" label="Store" />
         <TextField source="network_id.name" label="Network" />
         <TextField source="status" />
-        <TextField source="updated_at" />
       </Datagrid>
     </List>
   );
