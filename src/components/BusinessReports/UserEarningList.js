@@ -4,7 +4,7 @@ import {
   Datagrid,
   TextField,
   NumberField,
-  BooleanField,
+  DateField,
 } from "react-admin";
 
 const UserEarningList = (props) => {
@@ -18,7 +18,7 @@ const UserEarningList = (props) => {
         <NumberField source="id" />
         <TextField source="email" label="User" />
         <TextField source="earning" />
-        <TextField source="user_registered" />
+        <DateField source="user_registered" />
       </Datagrid>
     </List>
   );

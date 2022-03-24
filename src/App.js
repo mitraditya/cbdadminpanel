@@ -55,12 +55,17 @@ import CouponCategoryEdit from "./components/Coupon/CouponCategory/CouponCategor
 import CouponList from "./components/Coupon/Coupon/CouponList";
 import CouponCreate from "./components/Coupon/Coupon/CouponCreate";
 import CouponEdit from "./components/Coupon/Coupon/CouponEdit";
-//import Referral, { ReferralCreate, ReferralEdit, ReferralList } from "./components/Settings/Referral";
+import Referral from "./components/Settings/Referral";
 import CashbackRatesList from "./components/CashbackRates/CashbackRatesList";
 import CashbackRatesCreate from "./components/CashbackRates/CashbackRatesCreate";
 import CashbackRatesEdit from "./components/CashbackRates/CashbackRatesEdit";
 import BannerList from "./components/Banner/BannerList";
 import BannerCreate from "./components/Banner/BannerCreate";
+import NotifList from "./components/Notification/NotifList";
+import NotifCreate from "./components/Notification/NotifCreate";
+import NotifEdit from "./components/Notification/NotifEdit";
+import UserList from "./components/User/UserList";
+import UserEdit from "./components/User/UserEdit";
 
 function App() {
   return (
@@ -225,6 +230,12 @@ function App() {
         options={{ label: "Users Information", isMenuParent: true }}
       />
       <Resource
+        name="user"
+        options={{ label: "Users", menuParent: "users_information" }}
+        list={UserList}
+        edit={UserEdit}
+      />
+      <Resource
         name="links"
         options={{ label: "Links for S&E", menuParent: "users_information" }}
         list={SnELinksList}
@@ -268,14 +279,16 @@ function App() {
         options={{ label: "Settings", isMenuParent: true }}
       />
       <Resource
-        name="banners"
-        options={{ label: "Banners", isMenuParent: true }}
+        name="referral"
+        options={{ label: "Referral", menuParent: "settingss" }}
+        edit={Referral}
       />
+      <Resource name="banner" list={BannerList} create={BannerCreate} />
       <Resource
-        name="banner"
-        options={{ label: "Banner", menuParent: "banners" }}
-        list={BannerList}
-        create={BannerCreate}
+        name="notification"
+        list={NotifList}
+        create={NotifCreate}
+        edit={NotifEdit}
       />
     </Admin>
   );
