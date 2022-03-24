@@ -34,12 +34,15 @@ const myDataProvider = {
         data: { ...params.data, id: json.id },
       }));
     }
-    if (resource === "coupon/couponcategory" && params.data.featured_image_url) {
+    if (
+      resource === "coupon/couponcategory" &&
+      params.data.featured_image_url
+    ) {
       // fallback to the default implementation
       let formData = new FormData();
 
-      if(params.data.featured)
-      formData.append("featured", params.data.featured);
+      if (params.data.featured)
+        formData.append("featured", params.data.featured);
       formData.append("visits", params.data.visits);
       formData.append("h1", params.data.h1);
       formData.append("h2", params.data.h2);
@@ -59,11 +62,11 @@ const myDataProvider = {
       // fallback to the default implementation
       let formData = new FormData();
 
+      console.log(params);
+
       formData.append("link", params.data.link);
-      formData.append(
-        "image",
-        params.data.image.rawFile
-      );
+      formData.append("image", params.data.image.rawFile);
+      formData.append("store", params.data.store);
 
       return httpClient(`${process.env.REACT_APP_BACKEND}/${resource}`, {
         method: "POST",

@@ -16,6 +16,7 @@ const NotifList = (props) => {
         <NumberField source="id" />
         <TextField source="title" />
         <TextField source="desc" />
+        <TextField source="store.name" label="Store" />
         <DateField source="created" />
         <EditButton basePath="notification" />
         <DeleteButton basePath="notification" />

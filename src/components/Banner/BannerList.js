@@ -8,12 +8,12 @@ import {
 } from "react-admin";
 
 const BannerList = (props) => {
-  console.log(props);
   return (
     <List {...props}>
       <Datagrid rowClick="edit">
         <NumberField source="id" />
         <TextField source="link" />
+        <TextField source="store.name" label="store" />
         <DeleteButton basePath="banner" />
       </Datagrid>
     </List>
