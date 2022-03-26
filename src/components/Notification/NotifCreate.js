@@ -1,14 +1,37 @@
-import React from 'react';
-import { Create, SimpleForm, TextInput } from "react-admin";
+import React, { useState, useEffect } from "react";
+import { Create, SimpleForm, TextInput, AutocompleteInput } from "react-admin";
+import { getStores } from "../../api/store";
 
 const NotifCreate = (props) => {
+  const [stores, setStores] = useState([]);
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    async function getData() {
+      const stores = await getStores();
+      setStores(stores);
+      setLoaded(true);
+    }
+    getData();
+  }, []);
   return (
-    <Create title="Create a Notfication" {...props}>
-        <SimpleForm>
+    <>
+      {loaded && (
+        <Create title="Create a Notfication" {...props}>
+          <SimpleForm>
             <TextInput source="title" />
             <TextInput source="desc" />
-        </SimpleForm>
-    </Create>
+            <TextInput source="link" />
+            <AutocompleteInput
+              source="store"
+              choices={stores}
+              optionText="name"
+              optionValue="id"
+            />
+          </SimpleForm>
+        </Create>
+      )}
+    </>
   );
 };
 
