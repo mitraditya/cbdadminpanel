@@ -6,7 +6,7 @@ import {
   BooleanInput,
 } from "react-admin";
 
-const Referral = (props) => {
+const ReferralEdit = (props) => {
   return (
     <Edit title="Edit Referral" {...props}>
       <SimpleForm>
@@ -17,4 +17,4 @@ const Referral = (props) => {
   );
 };
 
-export default Referral;
+export default ReferralEdit;

@@ -55,7 +55,8 @@ import CouponCategoryEdit from "./components/Coupon/CouponCategory/CouponCategor
 import CouponList from "./components/Coupon/Coupon/CouponList";
 import CouponCreate from "./components/Coupon/Coupon/CouponCreate";
 import CouponEdit from "./components/Coupon/Coupon/CouponEdit";
-import Referral from "./components/Settings/Referral";
+import ReferralList from "./components/Settings/ReferralList";
+import ReferralEdit from "./components/Settings/ReferralEdit";
 import CashbackRatesList from "./components/CashbackRates/CashbackRatesList";
 import CashbackRatesCreate from "./components/CashbackRates/CashbackRatesCreate";
 import CashbackRatesEdit from "./components/CashbackRates/CashbackRatesEdit";
@@ -279,9 +280,10 @@ function App() {
         options={{ label: "Settings", isMenuParent: true }}
       />
       <Resource
-        name="referral"
+        name="settings"
         options={{ label: "Referral", menuParent: "settingss" }}
-        edit={Referral}
+        list={ReferralList}
+        edit={ReferralEdit}
       />
       <Resource name="banner" list={BannerList} create={BannerCreate} />
       <Resource
