@@ -37,6 +37,7 @@ const UserEdit = (props) => {
         <TextInput source="referralLink" />
         <NumberInput source="referralUser" />
         <BooleanInput source="is_email_verified" />
+        <NumberInput source="gender" />
         <BooleanInput source="is_mobile_verified" />
         <BooleanInput source="is_profile_complete" />
         <TextInput source="city" />

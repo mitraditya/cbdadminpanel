@@ -1,5 +1,6 @@
 import React from "react";
-import { Admin, Resource, Layout } from "react-admin";
+import { Admin, Resource, Layout, RoutesWithLayout } from "react-admin";
+import { Route } from "react-router-dom";
 import TreeMenu from "@bb-tech/ra-treemenu";
 import Dashboard from "./components/Dashboard";
 import authProvider from "./components/Auth/authProvider";
@@ -44,7 +45,7 @@ import UserEarningList from "./components/BusinessReports/UserEarningList";
 import NetworkEarningList from "./components/BusinessReports/NetworkEarningList ";
 import StoreEarningList from "./components/BusinessReports/StoreEarningList";
 import ProfitReportList from "./components/BusinessReports/ProfitReportList";
-
+//import Menu from "./Menu";
 import StoreCategoryList from "./components/StoreCategory/StoreCategoryList";
 import StoreCategoryCreate from "./components/StoreCategory/StoreCategoryCreate";
 import StoreCategoryEdit from "./components/StoreCategory/StoreCategoryEdit";
@@ -73,8 +74,18 @@ function App() {
       layout={(props) => <Layout {...props} menu={TreeMenu} />}
       loginPage={LoginPage}
       dashboard={Dashboard}
+      customRoutes={[
+        <Route
+          exact
+          path="/referral"
+          name="referral"
+          component={Referral}
+          // options={{ label: "Referral", menuParent: "settingss" }}
+        />,
+      ]}
       authProvider={authProvider}
       dataProvider={dataProvider}
+      // menu={Menu}
     >
       {/* Stores */}
       <Resource name="store" options={{ label: "Store", isMenuParent: true }} />

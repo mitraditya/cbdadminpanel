@@ -22,6 +22,7 @@ const NotifEdit = (props) => {
           <SimpleForm>
             <TextInput source="title" />
             <TextInput source="desc" />
+            <TextInput source="link" />
             <AutocompleteInput
               source="store"
               choices={stores}
