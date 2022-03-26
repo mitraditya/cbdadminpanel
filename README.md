@@ -6,7 +6,9 @@ This project is deployed through vercel at [https://cbdadminpanel.vercel.app/](h
 
 To setup the project, you should first have node installed on your local machine. To install node, follow the instructions given [here](https://phoenixnap.com/kb/install-node-js-npm-on-windows).
 
-In the project directory, first run:
+Add a ```.env``` file in the root directory of the project, with a variable ```REACT_APP_BACKEND``` equal to the backend url, which over here is [https://v-rohan.ninja](https://v-rohan.ninja).
+
+Now, in the project directory, run:
 
 ### `npm install`
 
