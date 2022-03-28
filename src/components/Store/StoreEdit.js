@@ -10,6 +10,7 @@ import {
   ImageInput,
   required,
   AutocompleteArrayInput,
+  FunctionField,
 } from "react-admin";
 
 import { ColorInput } from "react-admin-color-input";
@@ -107,6 +108,17 @@ const StoreEdit = (props) => {
             <TextInput source="h1" />
             <TextInput source="h2" />
             <TextInput source="description" />
+            <FunctionField
+              source="image"
+              render={(record) => (
+                <img
+                  src={`${process.env.REACT_APP_BACKEND}/${record.image}`}
+                  title="image"
+                  alt=""
+                  style={{ height: "300px" }}
+                />
+              )}
+            />
             <ImageInput source="image" accept="image/*" validate={required()}>
               <ImageField source="image" title="Image" />
             </ImageInput>

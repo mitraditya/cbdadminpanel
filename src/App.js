@@ -75,15 +75,6 @@ function App() {
       layout={(props) => <Layout {...props} menu={TreeMenu} />}
       loginPage={LoginPage}
       dashboard={Dashboard}
-      customRoutes={[
-        <Route
-          exact
-          path="/referral"
-          name="referral"
-          component={Referral}
-          // options={{ label: "Referral", menuParent: "settingss" }}
-        />,
-      ]}
       authProvider={authProvider}
       dataProvider={dataProvider}
       // menu={Menu}
