@@ -30,7 +30,6 @@ const getNetworks = async () => {
       },
     });
     const networks = await res.json();
-    console.log(networks);
     return networks;
   } catch (err) {
     console.log(err);
@@ -47,7 +46,6 @@ const getCategories = async () => {
       }
     );
     const categories = await res.json();
-    console.log(categories);
     return categories;
   } catch (err) {
     console.log(err);
@@ -59,8 +57,9 @@ const StoreEdit = (props) => {
   const [loaded, setLoaded] = useState(false);
   const [categories, setCategories] = useState([]);
 
+  console.log(props);
+
   useEffect(() => {
-    console.log("USe Effect ran");
     const load = async () => {
       const networks = await getNetworks();
       setNetworks(networks);

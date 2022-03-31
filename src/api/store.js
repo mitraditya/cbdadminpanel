@@ -14,4 +14,20 @@ const getStores = async () => {
   }
 };
 
-export { getStores };
+const getStoreById = async (id) => {
+  try {
+    const { token } = JSON.parse(localStorage.getItem("auth"));
+    const res = await fetch(`${process.env.REACT_APP_BACKEND}/stores/${id}`, {
+      headers: {
+        Authorization: token,
+      },
+    });
+    const store = await res.json();
+    console.log(store);
+    return store;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export { getStores, getStoreById };

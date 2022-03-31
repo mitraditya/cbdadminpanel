@@ -124,9 +124,9 @@ const myDataProvider = {
 
     return dataProvider.create(resource, params);
   },
+
   update: (resource, params) => {
     if (resource === "stores") {
-      // fallback to the default implementation
       let formData = new FormData();
 
       console.log(params.data);
@@ -134,7 +134,7 @@ const myDataProvider = {
       formData.append("name", params.data.name);
       formData.append("homepage", params.data.homepage);
       formData.append("affiliate_link", params.data.affiliate_link);
-      formData.append("network_id", params.data.network_id);
+      formData.append("network_id", params.data.network_id.id);
       formData.append("featured", params.data.featured);
       formData.append("cashback_enabled", params.data.cashback_enabled);
       formData.append("cashback_percent", params.data.cashback_percent);
@@ -149,7 +149,9 @@ const myDataProvider = {
       formData.append("h1", params.data.h1);
       formData.append("h2", params.data.h2);
       formData.append("description", params.data.description);
-      formData.append("image", params.data.image.rawFile);
+      if (typeof params.data.image === "object" && params.data.image !== null)
+        formData.append("image", params.data.image.rawFile);
+      else formData.append("image", params.data.image);
       formData.append("network_campaign_id", params.data.network_campaign_id);
       formData.append("coupon_count", params.data.coupon_count);
       formData.append("payout_days", params.data.payout_days);
@@ -161,7 +163,13 @@ const myDataProvider = {
       formData.append("status", params.data.status);
       formData.append("color1", params.data.color1);
       formData.append("color2", params.data.color2);
-      formData.append("categories", params.data.categories);
+      if (params.data.categories.length !== 0) {
+        const categories = [];
+        params.data.categories.forEach((category) =>
+          categories.push(category.cat_id)
+        );
+        formData.append("categories", categories);
+      }
 
       return httpClient(
         `${process.env.REACT_APP_BACKEND}/${resource}/${params.id}`,
